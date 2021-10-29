@@ -1,22 +1,18 @@
-<script>
+<script setup>
 import useAutoCount from "./composables/useAutoCount";
 import Count from "./components/Count";
 
-export default {
-  name: "App",
-  components: {
-    Count,
+const props = defineProps({
+  initialCount: {
+    type: Number,
+    default: 0,
   },
-  setup() {
-    const { count } = useAutoCount(0);
-    return { count };
-  },
-  methods: {
-    reset() {
-      this.count = 0;
-    },
-  },
-};
+});
+
+const { count } = useAutoCount(props.initialCount);
+function reset() {
+  count.value = 0;
+}
 </script>
 
 <template>
