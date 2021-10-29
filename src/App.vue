@@ -1,8 +1,12 @@
 <script>
-import useAutoCount from "./components/useAutoCount";
+import useAutoCount from "./composables/useAutoCount";
+import Count from "./components/Count";
 
 export default {
   name: "App",
+  components: {
+    Count,
+  },
   setup() {
     const { count } = useAutoCount(0);
     return { count };
@@ -17,7 +21,7 @@ export default {
 
 <template>
   <div>
-    <p>{{ count }}</p>
+    <Count :count="count" />
     <button @click="reset">Reset</button>
   </div>
 </template>
